@@ -1,0 +1,31 @@
+{
+  "name": "cypress-typescript-testing",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "cy:verify": "cypress verify",
+    "cy:version": "cypress version",
+    "cy:info": "cypress info",
+    "cy:cache:list": "cypress cache list",
+    "list-videos": "ls -l cypress/videos",
+    "build": "tsc",
+    "lint": "npx @biomejs/biome lint . --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^22.13.10",
+    "cypress": "^14.2.1",
+    "typescript": "^5.8.2"
+  },
+  "cypress": {
+    "component": {
+      "componentFolder": "cypress/component",
+      "testFiles": "**/*.cy.ts"
+    },
+    "e2e": {
+      "supportFile": "cypress/support/e2e.ts"
+    }
+  }
+}
