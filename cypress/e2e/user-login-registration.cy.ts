@@ -78,5 +78,10 @@ describe('User Login and Registration', () => {
 
     // Verify error 'Your email or password is incorrect!' is visible
     cy.contains('Email Address already exist!').should('be.visible');
+
+    cy.login(user.email, user.password);
+    
+    // Verify that the user is logged in by checking the visibility of a specific element
+    cy.get('.shop-menu > .nav > :nth-child(4) > a').should('be.visible');
   });
 });
