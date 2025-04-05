@@ -3,13 +3,18 @@
     "baseUrl": "./",
     "target": "ES6",
     "module": "ESNext",
+    "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["cypress"],
+    "types": [
+      "cypress"
+    ],
     "paths": {
-      "cypress/*": ["./cypress/*"]
+      "cypress/*": [
+        "./cypress/*"
+      ]
     },
   },
   "include": [
