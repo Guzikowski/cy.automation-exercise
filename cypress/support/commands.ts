@@ -1,28 +1,30 @@
+import type { User } from './types';
+
 Cypress.Commands.add('logout', () => {
   // Add the steps to log out the user
   cy.get('.shop-menu > .nav > li > a').contains('Logout').click();
 });
 
-Cypress.Commands.add('createAccount', (user) => {
+Cypress.Commands.add('createAccount', (user: User) => {
   // Prepare the form-urlencoded data
   const formData = [
-    `name=${encodeURIComponent(`${user.firstName} ${user.lastName}`)}`,
+    `name=${encodeURIComponent(`${user.name}`)}`,
     `email=${encodeURIComponent(user.email)}`,
     `password=${encodeURIComponent(user.password)}`,
-    `title=${encodeURIComponent(user.gender === 'male' ? 'Mr' : 'Mrs')}`,
+    `title=${encodeURIComponent(user.title)}`,
     `birth_date=${encodeURIComponent(user.birthDate.day)}`,
     `birth_month=${encodeURIComponent(user.birthDate.month)}`,
     `birth_year=${encodeURIComponent(user.birthDate.year)}`,
-    `firstname=${encodeURIComponent(user.firstName)}`,
-    `lastname=${encodeURIComponent(user.lastName)}`,
-    `company=${encodeURIComponent(user.company)}`,
-    `address1=${encodeURIComponent(user.address1)}`,
-    `address2=${encodeURIComponent(user.address2)}`,
-    `country=${encodeURIComponent(user.country)}`,
-    `zipcode=${encodeURIComponent(user.zipcode)}`,
-    `state=${encodeURIComponent(user.state)}`,
-    `city=${encodeURIComponent(user.city)}`,
-    `mobile_number=${encodeURIComponent(user.mobileNumber)}`
+    `firstname=${encodeURIComponent(user.address.firstName)}`,
+    `lastname=${encodeURIComponent(user.address.lastName)}`,
+    `company=${encodeURIComponent(user.address.company)}`,
+    `address1=${encodeURIComponent(user.address.address1)}`,
+    `address2=${encodeURIComponent(user.address.address2)}`,
+    `country=${encodeURIComponent(user.address.country)}`,
+    `zipcode=${encodeURIComponent(user.address.zipcode)}`,
+    `state=${encodeURIComponent(user.address.state)}`,
+    `city=${encodeURIComponent(user.address.city)}`,
+    `mobile_number=${encodeURIComponent(user.address.mobileNumber)}`
   ].join('&');
 
   // Send the API request to create the account
